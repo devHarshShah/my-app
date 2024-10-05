@@ -30,7 +30,7 @@ function App() {
   const x3 = useTransform(scrollYProgress, [0.66, 1], [isMobile ? "0%" : "100%", isMobile ? "0%" : "0%"]);
 
   const yText1 = useTransform(scrollYProgress, [0, 0.33], ["0%", isMobile ? "-50%" : "0%"]);
-  const yText2 = useTransform(scrollYProgress, [0.33, 0.66], [isMobile ? "100%" : "0%", isMobile ? "0%" : "0%"]);
+  const yText2 = useTransform(scrollYProgress, [0.33, 0.66, 1], [isMobile ? "100%" : "0%", isMobile ? "0%" : "0%", isMobile ? "-50%" : "0%"]);
   const yText3 = useTransform(scrollYProgress, [0.66, 1], [isMobile ? "100%" : "0%", isMobile ? "0%" : "0%"]);
 
   // Opacity transformations to hide previous elements
@@ -45,7 +45,7 @@ function App() {
   const transition = { type: "spring", stiffness: 50, damping: 20, duration: 2 };
 
   return (
-    <div className="h-[600vh]">
+    <div className="h-[300vh] md:h-[600vh]">
       <div className="fixed top-0 left-0 w-full h-full flex flex-col md:flex-row">
         <div className="w-full md:w-[38%] h-full relative overflow-hidden">
           <motion.img
