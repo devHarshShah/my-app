@@ -22,6 +22,12 @@ const Animation2 = () => {
     };
   }, []);
 
+  const springConfig = {
+    type: "spring",
+    stiffness: 20,
+    damping: 20,
+  };
+
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 1]);
   const translateY = useTransform(scrollYProgress, [0, 1], ["40%", "0%"]);
 
@@ -30,51 +36,61 @@ const Animation2 = () => {
     [0, 1],
     isMobile
       ? ["inset(100% 0% 0% 0%)", "inset(0% 0% 0% 0%)"]
-      : ["inset(100% 60% 0% 60%)", "inset(0% 0% 0% 0%)"]
+      : ["inset(100% 65% 0% 65%)", "inset(0% 0% 0% 0%)"]
   );
 
   const whiteClipPath = useTransform(
     scrollYProgress,
     [0, 1],
-    [
-      "inset(0% 0% 0% 0%)", 
-      "inset(100% 100% 100% 100%)", 
-    ]
+    ["inset(0% 0% 0% 0%)", "inset(100% 100% 100% 100%)"]
   );
 
   const textY = useTransform(scrollYProgress, [0, 1], ["30%", "0%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   // Transformations for "Your Vision" text with bouncing effect
-  const visionTextY = useTransform(scrollYProgress, [0, 0.5, 1], ["0%", "-10%", "-20%"]);
+  const visionTextY = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    ["0%", "-10%", "-20%"]
+  );
 
   // Custom spring configuration for a more bouncy feel
-  const springConfig = {
-    type: "spring",
-    stiffness: 20,
-    damping: 20,
-  };
 
   return (
     <>
       {/* Outer container now has enough height */}
-      <div ref={sectionRef} className="h-[300vh] relative">
+      <div ref={sectionRef} className="h-[200vh] relative">
         {/* The animated background */}
         <motion.div
           style={{
             scale,
             translateY,
             clipPath: imageClipPath,
-            backgroundImage:
-              "url('https://cdn.prod.website-files.com/633ef3c0bd3be81b55ba5334/63529189ef305a5e65dd0575_Dvele-prefab-homes-sticky-home.jpg')",
           }}
           transition={{
             type: "spring",
-            stiffness: 30,
-            damping: 40,
+            stiffness: 50,
+            damping: 50,
           }}
-          className="fixed inset-0 bg-cover bg-center z-20"
-        />
+          className="fixed inset-0 z-20 overflow-hidden" // Ensure overflow hidden
+        >
+          <motion.img
+            src="https://cdn.prod.website-files.com/633ef3c0bd3be81b55ba5334/63529189ef305a5e65dd0575_Dvele-prefab-homes-sticky-home.jpg"
+            alt="Background"
+            className="w-full h-full object-cover" // Use full width and height
+            style={{
+              scale,
+              translateY,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 50,
+            }}
+          />
+        </motion.div>
+
         {/* The white overlay */}
         <motion.div
           style={{
