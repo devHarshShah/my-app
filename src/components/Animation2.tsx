@@ -46,7 +46,7 @@ const Animation2 = () => {
   );
 
   const textY = useTransform(scrollYProgress, [0, 1], ["30%", "0%"]);
-  const textOpacity = useTransform(scrollYProgress, [0.4, 1], [0, 1]);
+  const textOpacity = useTransform(scrollYProgress, [0.55, 1], [0, 1]);
 
   // Transformations for "Your Vision" text with bouncing effect
   const visionTextY = useTransform(
@@ -131,7 +131,13 @@ const Animation2 = () => {
           }}
           className="fixed inset-0 flex items-center justify-center z-30"
         >
-          <h2 className="md:text-8xl font-bold text-white text-4xl">
+          <h2
+            className="md:text-8xl font-bold text-white text-4xl"
+            style={{
+              color: "white",
+              textShadow: "2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black",
+            }}
+          >
             Our Expertise
           </h2>
         </motion.div>
