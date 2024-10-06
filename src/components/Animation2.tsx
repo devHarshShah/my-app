@@ -50,12 +50,13 @@ const Animation2 = () => {
   const smoothTransition = {
     duration: 1.2, // Longer duration for smoother animation
     ease: "easeInOut", // Smooth easing for a relaxed feel
+    delay: 0.3, // Delay added to the transition for smoothness
   };
 
   const relaxedDelayTransition = {
     duration: 1.2,
     ease: "easeInOut",
-    delay: 0.3, // Delay between transitions to give a relaxed effect
+    delay: 0.5, // Larger delay for background transitions
   };
 
   return (
