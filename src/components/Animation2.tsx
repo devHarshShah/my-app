@@ -76,7 +76,7 @@ const Animation2 = () => {
           className="fixed inset-0 z-20 overflow-hidden" // Ensure overflow hidden
         >
           <motion.img
-            src="https://cdn.prod.website-files.com/633ef3c0bd3be81b55ba5334/63529189ef305a5e65dd0575_Dvele-prefab-homes-sticky-home.jpg"
+            src="IMG_5761.jpg"
             alt="Background"
             className="w-full h-full object-cover" // Use full width and height
             style={{
@@ -131,7 +131,7 @@ const Animation2 = () => {
           }}
           className="fixed inset-0 flex items-center justify-center z-30"
         >
-          <h2 className="md:text-8xl font-bold text-white text-4xl">
+          <h2 className="md:text-8xl font-bold text-blue-500 text-4xl">
             Our Expertise
           </h2>
         </motion.div>
