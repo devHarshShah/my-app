@@ -22,28 +22,41 @@ const Animation2 = () => {
     };
   }, []);
 
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 1]);
-  const translateY = useTransform(scrollYProgress, [0, 1], ["40%", "0%"]);
+  // Smoother scaling animation with a relaxed feel
+  const scale = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [1, 1.5, 2, 1.5, 1]);
+  const translateY = useTransform(scrollYProgress, [0, 1], ["55%", "0%"]);
 
   const imageClipPath = useTransform(
     scrollYProgress,
     [0, 1],
     isMobile
       ? ["inset(100% 0% 0% 0%)", "inset(0% 0% 0% 0%)"]
-      : ["inset(100% 50% 0% 50%)", "inset(0% 0% 0% 0%)"]
+      : ["inset(100% 85% 0% 85%)", "inset(0% 0% 0% 0%)"]
   );
 
   const whiteClipPath = useTransform(
     scrollYProgress,
     [0, 1],
     [
-      "inset(0% 0% 0% 0%)", 
-      "inset(100% 100% 100% 100%)", 
+      "inset(0% 0% 0% 0%)",
+      "inset(100% 100% 100% 100%)",
     ]
   );
 
   const textY = useTransform(scrollYProgress, [0, 1], ["30%", "0%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  // Custom easing-based transition for a more relaxed feel
+  const smoothTransition = {
+    duration: 1.2, // Longer duration for smoother animation
+    ease: "easeInOut", // Smooth easing for a relaxed feel
+  };
+
+  const relaxedDelayTransition = {
+    duration: 1.2,
+    ease: "easeInOut",
+    delay: 0.3, // Delay between transitions to give a relaxed effect
+  };
 
   return (
     <>
@@ -56,13 +69,9 @@ const Animation2 = () => {
             translateY,
             clipPath: imageClipPath,
             backgroundImage:
-              "url('test.jpeg')",
+              "url('https://cdn.prod.website-files.com/633ef3c0bd3be81b55ba5334/63529189ef305a5e65dd0575_Dvele-prefab-homes-sticky-home.jpg')",
           }}
-          transition={{
-            type: "spring",
-            stiffness: 30,
-            damping: 40,
-          }}
+          transition={relaxedDelayTransition} // Adding delay for smoothness
           className="fixed inset-0 bg-cover bg-center z-20"
         />
         {/* The white overlay */}
@@ -73,11 +82,7 @@ const Animation2 = () => {
             clipPath: whiteClipPath,
             backgroundColor: "white",
           }}
-          transition={{
-            type: "spring",
-            stiffness: 30,
-            damping: 40,
-          }}
+          transition={relaxedDelayTransition} // Adding delay for smoothness
           className="fixed inset-0"
         />
         {/* First text */}
@@ -92,11 +97,7 @@ const Animation2 = () => {
             y: textY,
             opacity: textOpacity,
           }}
-          transition={{
-            type: "spring",
-            stiffness: 30,
-            damping: 40,
-          }}
+          transition={smoothTransition} // Smooth transition for the text
           className="fixed inset-0 flex items-center justify-center z-30"
         >
           <h2 className="md:text-8xl font-bold text-white text-4xl">
