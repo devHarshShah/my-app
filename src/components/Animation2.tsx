@@ -46,7 +46,7 @@ const Animation2 = () => {
   );
 
   const textY = useTransform(scrollYProgress, [0, 1], ["30%", "0%"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const textOpacity = useTransform(scrollYProgress, [0.4, 1], [0, 1]);
 
   // Transformations for "Your Vision" text with bouncing effect
   const visionTextY = useTransform(
