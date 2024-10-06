@@ -26,8 +26,8 @@ function App() {
 
   // Transformations for text
   const x1 = useTransform(scrollYProgress, [0, 0.165, 0.33], ["0%", isMobile ? "0%" : "-50%", isMobile ? "0%" : "-110%"]);
-  const x2 = useTransform(scrollYProgress, [0.165, 0.33, 0.495, 0.66, 0.83], [isMobile ? "0%" : "100%" , isMobile ? "0%" : "50%", isMobile ? "0%" : "0%", isMobile ? "0%" : "0%", isMobile ? "0%" : "-110%"]);
-  const x3 = useTransform(scrollYProgress, [0.75, 0.83, 1], [isMobile ? "0%" : "100%", isMobile ? "0%" : "50%", isMobile ? "0%" : "0%"]);
+  const x2 = useTransform(scrollYProgress, [0.165, 0.33, 0.495, 0.66, 0.83], [isMobile ? "0%" : "100%" , isMobile ? "0%" : "50%", isMobile ? "0%" : "0%", isMobile ? "0%" : "0%", isMobile ? "0%" : "-130%"]);
+  const x3 = useTransform(scrollYProgress, [0.75, 0.83, 1], [isMobile ? "0%" : "100%", isMobile ? "0%" : "40%", isMobile ? "0%" : "0%"]);
 
   const yText1 = useTransform(scrollYProgress, [0, 0.33], ["0%", isMobile ? "-50%" : "0%"]);
   const yText2 = useTransform(scrollYProgress, [0.33, 0.495, 0.66, 0.83], [isMobile ? "100%" : "0%", isMobile ? "0%" : "0%", isMobile ? "0%" : "0%", isMobile ? "-150%" : "0%"]);
@@ -35,7 +35,7 @@ function App() {
 
   // Opacity transformations to hide previous elements
   const opacity1 = useTransform(scrollYProgress, [0, 0.33], [1, 1]);
-  const opacity2 = useTransform(scrollYProgress, [0.33, 0.66, 0.83], [0.85, 1, 1]);
+  const opacity2 = useTransform(scrollYProgress, [0.33, 0.495, 0.83], [0.85, 1, 1]);
   const opacity3 = useTransform(scrollYProgress, [0.83, 1], [0.85, 1]);
 
   const textopacity1 = useTransform(scrollYProgress, [0, 0.165, 0.33], [1, 1, 0]);
@@ -45,9 +45,9 @@ function App() {
   const transition = { type: "spring", stiffness: 50, damping: 20 };
 
   return (
-    <div className="h-[400vh] xl:h-[800vh]">
-      <div className="fixed top-0 left-0 w-full h-full flex flex-col xl:flex-row">
-        <div className="w-full xl:w-[38%] h-full relative overflow-hidden">
+    <div className="h-[400vh] xl:h-[800vh] bg-black">
+      <div className="fixed top-0 left-0 w-full h-full flex flex-col xl:flex-row text-white">
+        <div className="w-full xl:w-[50%] h-full relative overflow-hidden">
           <motion.img
             src="/1.jpg"
             className="absolute w-full h-full object-cover z-10"
@@ -67,7 +67,7 @@ function App() {
             transition={transition}
           />
         </div>
-        <div className="w-full xl:w-[62%] h-full flex flex-col items-center justify-center relative p-4 xl:p-24">
+        <div className="w-full xl:w-[50%] h-full flex flex-col items-center justify-center relative p-4 xl:p-24">
           <motion.div
             className="absolute mx-4 xl:mx-24 z-0"
             style={{ x: x1, y: yText1, opacity: textopacity1 }}
