@@ -135,7 +135,7 @@ const Animation2 = () => {
             className="md:text-8xl font-bold text-white text-4xl"
             style={{
               color: "white",
-              textShadow: "2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black",
+              textShadow: "0.5px 0.5px 0 grey, -0.5px -0.5px 0 grey, 0.5px -0.5px 0 grey, -0.5px 0.5px 0 grey",
             }}
           >
             Our Expertise
