@@ -131,7 +131,7 @@ const Animation2 = () => {
           }}
           className="fixed inset-0 flex items-center justify-center z-30"
         >
-          <h2 className="md:text-8xl font-bold text-blue-500 text-4xl">
+          <h2 className="md:text-8xl font-bold text-white text-4xl">
             Our Expertise
           </h2>
         </motion.div>
