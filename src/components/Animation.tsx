@@ -1,4 +1,4 @@
-import "../App.css"
+import "../App.css";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -24,6 +24,10 @@ function Animation() {
   const y2 = useTransform(scrollYProgress, [0.33, 0.495, 0.66, 0.83], ["100%", "0%", "0%", "0%"]);
   const y3 = useTransform(scrollYProgress, [0.83, 1], ["100%", "0%"]);
 
+  const scale1 = useTransform(scrollYProgress, [0.165, 0.33], [1.05, 1]);
+  const scale2 = useTransform(scrollYProgress, [0.33, 0.495, 0.66], [1, 1.05, 1]);
+  const scale3 = useTransform(scrollYProgress, [0.66, 0.83, 1], [1, 1.05, 1]);
+  
   // Transformations for text
   const x1 = useTransform(scrollYProgress, [0, 0.165, 0.33], ["0%", isMobile ? "0%" : "-50%", isMobile ? "0%" : "-110%"]);
   const x2 = useTransform(scrollYProgress, [0.165, 0.33, 0.495, 0.66, 0.83], [isMobile ? "0%" : "100%" , isMobile ? "0%" : "50%", isMobile ? "0%" : "0%", isMobile ? "0%" : "0%", isMobile ? "0%" : "-130%"]);
@@ -38,34 +42,56 @@ function Animation() {
   const opacity2 = useTransform(scrollYProgress, [0.33, 0.495, 0.83], [0.85, 1, 1]);
   const opacity3 = useTransform(scrollYProgress, [0.83, 1], [0.85, 1]);
 
+  const brightness1 = useTransform(scrollYProgress, [0.165, 0.33], ["brightness(1)", "brightness(0.75)"]);
+  const brightness2 = useTransform(scrollYProgress, [0.495, 0.66], ["brightness(1)", "brightness(0.75)"]);
+  const brightness3 = useTransform(scrollYProgress, [0.83, 1], ["brightness(1)", "brightness(1)"]);
+
   const textopacity1 = useTransform(scrollYProgress, [0, 0.165, 0.33], [1, 1, 0]);
   const textopacity2 = useTransform(scrollYProgress, [0.165, 0.33, 0.495, 0.66, 0.83], [0, 0.5, 1, 1, 1]);
   const textopacity3 = useTransform(scrollYProgress, [0.75, 0.83, 1], [0, 0.5, 1]);
 
-  const transition = { type: "spring", stiffness: 50, damping: 20 };
+  const transition = { type: "spring", stiffness: 30, damping: 40 };
 
   return (
-    <div className="h-[400vh] xl:h-[800vh] bg-black">
+    <div className="h-[400vh] xl:h-[500vh] bg-black">
       <div className="fixed top-0 left-0 w-full h-full flex flex-col xl:flex-row text-white">
         <div className="w-full xl:w-[50%] h-full relative overflow-hidden">
-          <motion.img
-            src="/1.jpg"
-            className="absolute w-full h-full object-cover z-10"
-            style={{ y: y1, opacity: opacity1 }}
+          <motion.div
+            className="absolute w-full h-full z-10"
+            style={{ y: y1, scale: scale1, filter: brightness1}}
             transition={transition}
-          />
-          <motion.img
-            src="/IMG_5750.jpg"
-            className="absolute w-full h-full object-cover z-10"
-            style={{ y: y2, opacity: opacity2 }}
+          >
+            <motion.img
+              src="/1.jpg"
+              className="w-full h-full object-cover"
+              style={{ opacity: opacity1 }}
+              transition={transition}
+            />
+          </motion.div>
+          <motion.div
+            className="absolute w-full h-full z-10"
+            style={{ y: y2, scale: scale2, filter: brightness2 }}
             transition={transition}
-          />
-          <motion.img
-            src="/IMG_5761.jpg"
-            className="absolute w-full h-full object-cover z-10"
-            style={{ y: y3, opacity: opacity3 }}
+          >
+            <motion.img
+              src="/IMG_5750.jpg"
+              className="w-full h-full object-cover"
+              style={{ opacity: opacity2 }}
+              transition={transition}
+            />
+          </motion.div>
+          <motion.div
+            className="absolute w-full h-full z-10"
+            style={{ y: y3, scale: scale3, filter: brightness3 }}
             transition={transition}
-          />
+          >
+            <motion.img
+              src="/IMG_5761.jpg"
+              className="w-full h-full object-cover"
+              style={{ opacity: opacity3 }}
+              transition={transition}
+            />
+          </motion.div>
         </div>
         <div className="w-full xl:w-[50%] h-full flex flex-col items-center justify-center relative p-4 xl:p-24">
           <motion.div
