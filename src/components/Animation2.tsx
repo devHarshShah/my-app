@@ -60,7 +60,7 @@ const Animation2 = () => {
   return (
     <>
       {/* Outer container now has enough height */}
-      <div ref={sectionRef} className="h-[200vh] relative">
+      <div ref={sectionRef} className="h-[200vh] relative bg-[#ededed]">
         {/* The animated background */}
         <motion.div
           style={{
@@ -97,7 +97,7 @@ const Animation2 = () => {
             scale: scale,
             translateY: translateY,
             clipPath: whiteClipPath,
-            backgroundColor: "white",
+            backgroundColor: "#ededed",
           }}
           transition={{
             type: "spring",
