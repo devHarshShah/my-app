@@ -56,7 +56,7 @@ const Animation2 = () => {
             translateY,
             clipPath: imageClipPath,
             backgroundImage:
-              "url('https://cdn.prod.website-files.com/633ef3c0bd3be81b55ba5334/63529189ef305a5e65dd0575_Dvele-prefab-homes-sticky-home.jpg')",
+              "url('test.jpeg')",
           }}
           transition={{
             type: "spring",
